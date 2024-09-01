@@ -1,0 +1,1756 @@
+{
+	"info": {
+		"_postman_id": "ac577966-1726-4798-88f4-cd2650d798f3",
+		"name": "Fuel App",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37136622"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Signup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"first_name\": \"sanjeev\",\r\n  \"last_name\" : \"rajput\",\r\n  \"position_in_company\": \"AMO\",\r\n  \"mobile\": \"87365355333\",\r\n  \"email\": \"sanjeev@gmail.com\",\r\n  \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/signup",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "17|yBfmQxXmQEKX0Vbadc21W100NJu3d2PYtBz9oxfXf909f289",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"sanjeev@gmail.com\",\r\n  \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/login",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "19|s3fBRE7Rk3MTVbjz8N8cvT71xCGulcTQSytE8IItbb697d0d",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/logout",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "14|E7Mn66AMeOqMfhh1EjBQhv7DZ1m0Jl5zRlFuh2ql65b3cd3e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/profile",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "11|nL4Mlzqjh8Oc1NH3hJOoIUjA5QgAXHFaKFi66Kik4dd59b32",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"first_name\": \"sumit\",\r\n    \"last_name\" : \"sunny\",\r\n    \"mobile\" : \"4564564567\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/profile/update",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"profile",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "14|E7Mn66AMeOqMfhh1EjBQhv7DZ1m0Jl5zRlFuh2ql65b3cd3e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/company/get",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"company",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "6|i8cNC8578X22HsOPYLRMysngyurYyvVt0TA7GCQla6ac1b74",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n     \"company_name\": \"baseline_it_info_MOhali\",\r\n    \"company_email\" : \"baseline@gmail.com\",\r\n     \"tin_number\" : \"456123789\",\r\n     \"company_address\" : \"palampur\",\r\n     \"company_contact_number\" : \"45678913\",\r\n     \"upload_bir\": [\r\n        \"https://site.com\",\r\n        \"https://site2.com\"\r\n    ],\r\n    \"upload_sec\": [\r\n        \"https://sec.com\",\r\n        \"https://sec2.com\"\r\n    ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/company/add",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"company",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delivery Addresss",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/address",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "13|i7GTiACf1bLf5neDh94dQvJMnMxibhEJkYtCMlb37a5a280e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"delivery_address\":\"Mohali\",\r\n     \"company_name\":\"nexon 2\",\r\n     \"contact_number\":\"89865543648\",\r\n     \"type_of_industry\":\"IT 2 \",\r\n     \"storage_type\":\"Others\",\r\n     \"other_specify\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/address/add",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "13|i7GTiACf1bLf5neDh94dQvJMnMxibhEJkYtCMlb37a5a280e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/address/get/1",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address",
+										"get",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set As Primary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "13|i7GTiACf1bLf5neDh94dQvJMnMxibhEJkYtCMlb37a5a280e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"delivery_address\":\"street Mohali\",\r\n     \"company_name\":\"ghh\",\r\n     \"contact_number\":\"1234566\",\r\n     \"type_of_industry\":\"IT \",\r\n     \"storage_type\":\"Other\",\r\n     \"other_specify\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/address/set-as-primary/2",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address",
+										"set-as-primary",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "13|i7GTiACf1bLf5neDh94dQvJMnMxibhEJkYtCMlb37a5a280e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"delivery_address\":\"street Mohali\",\r\n     \"company_name\":\"ghh\",\r\n     \"contact_number\":\"1234566\",\r\n     \"type_of_industry\":\"IT \",\r\n     \"storage_type\":\"Other\",\r\n     \"other_specify\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{endpoint}}/user/address/update/2",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "13|i7GTiACf1bLf5neDh94dQvJMnMxibhEJkYtCMlb37a5a280e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/address/delete/1",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"address",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Media",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/media/47",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"media",
+										"47"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/vishal/Downloads/2nd.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{endpoint}}/media/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"media",
+										""
+									],
+									"query": [
+										{
+											"key": "image",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/media/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"media",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/media/18",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"media",
+										"18"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by url",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "15|pW4rj7rGpezmXvBdo6YhJRcn8L5e4mQ3yJgfsQtz3cb215ef",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{endpoint}}/user/media/url?url=https://petro.bigfourglobalsystems.com/media/1722480310.jpg",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"media",
+										"url"
+									],
+									"query": [
+										{
+											"key": "url",
+											"value": "https://petro.bigfourglobalsystems.com/media/1722480310.jpg"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"driver_category\": \"In_Home\",\r\n    \"first_name\": \"Amy\",\r\n    \"last_name\": \"Ford\",\r\n    \"email\": \"amy1132fdf@gmail.copm\",\r\n    \"mobile\": \"7012345654\",\r\n    \"expiration_date\": \"10-05-2020\",\r\n    \"address\": \"Mohali\",\r\n    \"password\": \"123456\",\r\n    \"upload_valid_id\": [\r\n        \"https://site.com\",\r\n        \"https://site2.com\"\r\n    ],\r\n    \"license_number\": \"fasdf12346\",\r\n    \"vehicle_details\": \"pb-12-08-10\"\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/signup",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"amy@gmail.copm\",\r\n    \"password\": \"123456\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/login",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "22|vr3UzT57lhkoqLdizS8gQDlCSUNOcJokRo9NyB9o1b2b9213",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/driver/logout",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "25|ECmVYuykZS4DjzqOPTEya8iL1HqriTMKeR11dvBe8b430562",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/driver/2/show",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"2",
+								"show"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "25|ECmVYuykZS4DjzqOPTEya8iL1HqriTMKeR11dvBe8b430562",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/2/update",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Location Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "25|ECmVYuykZS4DjzqOPTEya8iL1HqriTMKeR11dvBe8b430562",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitude\": \"ytty\",\r\n    \"longitude\": \"eret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/2/location/update",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"2",
+								"location",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "34|BANOcmFU5dI5EVwZM2Pvlo4dSQ9vMTu2tiBLKUS3a85f148c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/driver/delete/5",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fuel Delivery",
+			"item": [
+				{
+					"name": "Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16|dYxnSg9pggGLnDyZsMyn1vF77IKduxriUIWtoq0f1549180b",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fuel_type\":\"yaa\",\r\n    \"quantity\":  \"76\",\r\n    \"location\": \"mohali\",\r\n    \"preferred_time\":\"5:49\",\r\n    \"status\":\"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/delivery/request",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"delivery",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16|dYxnSg9pggGLnDyZsMyn1vF77IKduxriUIWtoq0f1549180b",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/delivery/1/cancel",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"delivery",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16|dYxnSg9pggGLnDyZsMyn1vF77IKduxriUIWtoq0f1549180b",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/delivery/6/track",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"delivery",
+								"6",
+								"track"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "21|nNmtt2J8KJlqBOxGNeXsxghU8ZqtSDa0VjSLaqkIc06561d4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/delivery/history",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"delivery",
+								"history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fuel Purchase",
+			"item": [
+				{
+					"name": "Purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "31|fpUuB1N75cPMUiWxkqNcLxLnHu16IgMNLcj69ohQ67940a5c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fuel_type\": \"OIl\",\r\n    \"quantity\": \"55\",\r\n    \"price\": \"7789\",\r\n    \"supplier_id\": \"123\",\r\n    \"date\": \"12-08-2024\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/fuel/purchase",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"fuel",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "33|TC63NwhJ4eH5S4cIMg63QMJJ6g6WfBpicQgmZF7b00cc8b05",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/fuel/purchasehistory?date=2024-12-03&fuel_type=yes",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"fuel",
+								"purchasehistory"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-12-03"
+								},
+								{
+									"key": "fuel_type",
+									"value": "yes"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tanker",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "27|9phEuwHHZst4d7PpshDAWkkliHUYV15jHSiGjiXRf98a8f52",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"capacity\": \"100\",\r\n    \"status\": \"On Duty\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/tanker/register",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"tanker",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "27|9phEuwHHZst4d7PpshDAWkkliHUYV15jHSiGjiXRf98a8f52",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"Off Duty\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/driver/tanker/1/updatestatus",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"tanker",
+								"1",
+								"updatestatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "27|9phEuwHHZst4d7PpshDAWkkliHUYV15jHSiGjiXRf98a8f52",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/driver/tanker/1/get",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"driver",
+								"tanker",
+								"1",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/notifications",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Notification as Read",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/notifications/mark-as-read?notification_id=1",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"notifications",
+								"mark-as-read"
+							],
+							"query": [
+								{
+									"key": "notification_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fuel_type\":\"yes\",\r\n    \"quantity\":\"3\",\r\n    \"date\":\"2024-12-03\",\r\n    \"source\":\"oil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/inventory/add",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"inventory",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\":\"6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/inventory/2/update",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"inventory",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Levels",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/inventory/2/levels/",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"inventory",
+								"2",
+								"levels",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/user/inventory/history?date_range=2024-05-05&fuel_type=jio",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"inventory",
+								"history"
+							],
+							"query": [
+								{
+									"key": "date_range",
+									"value": "2024-05-05"
+								},
+								{
+									"key": "fuel_type",
+									"value": "jio"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Support and Feedback",
+			"item": [
+				{
+					"name": "Submit Feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "28|CCbFnfglpUwGrw2nFv7E3DKH64xFernWvo69dNqu1feed9a9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\":\"how are you\",\r\n    \"rating\":\"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/user/feedback",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"user",
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Support Contact Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/support/contact",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"support",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
